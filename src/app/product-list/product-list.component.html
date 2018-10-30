@@ -1,0 +1,28 @@
+<section>
+    <h1>{{title}}</h1>
+    <div>
+        <table>
+            <thead>
+                <th>Name</th>
+                <th>Category</th>
+                <th>Price</th>
+                <th>Rating</th>
+            </thead>
+            <tbody>
+                <tr *ngIf="!(products && products.length)">
+                    <td colspan="4">Loading Products...</td>
+                </tr>
+                <tr *ngFor="let product of products">
+                    <td>{{product.name}}</td>
+                    <td>{{product.category}}</td>
+                    <td>{{product.price | currency}}</td>
+                    <td>
+                        <app-star-rating 
+                            [rating]='product.rating'
+                            (change)='onRatingChange($event)'></app-star-rating>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
